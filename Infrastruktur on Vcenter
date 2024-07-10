@@ -1,0 +1,7 @@
+create a VMware Vcenter 7.0.3 that manages by Vsphere. before that i made zonning in a dell Brocade san switch for that our host and storage see each othe separetly. i mad a data store luster in Vcenter and added 14 LUN of EMC as a datastore cluster, with HA and DRS.
+set a role for Master Nodes to fix them in each host to avoid single point of failer and keep HA.
+all Server's OS is Ubuntu 22.04
+deployed server as ansible (manage) vm for running our infrastructure as code.
+deployed 3 master node (8core CPU, 32GB Memory, 100GB space>>> lvm /).
+deployed 9 Worker node (8core CPU, 32GB Memory, 100GB space>>> lvm /).
+deployed 5 Etcd node (8core CPU, 32GB Memory, 100GB space>>> lvm /).
