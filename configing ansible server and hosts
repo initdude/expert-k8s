@@ -1,0 +1,8 @@
+first build network infrastructure for our ansible server and hosts(Masters,Workers and etcds) in vsphere and in same vlan.
+set hosts in /etc/hosts on ansible server. this is for calling hosts by name insted of IPs.
+generated ssh key on ansible server and then copy it to all of ansible hosts.
+		ssh-keygen -t rsa
+		ssh-copy-id "hosts"
+		test the connection.
+when everything was good we proceed to next step that is configuering kubespray.
+
