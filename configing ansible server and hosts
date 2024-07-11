@@ -1,7 +1,11 @@
 first build network infrastructure for our ansible server and hosts(Masters,Workers and etcds) in vsphere and in same vlan.
+	IMPORTANT NOTE::: cause in Iran many servers and companies will not give service to Iranian People we should make sure 
+	that we have a secure and low latency connection.
+		so we must set a proper DNS server in our /etc/netplan/ and /etc/systemd/resolved.conf 
+
 set hosts in /etc/hosts on ansible server. this is for calling hosts by name insted of IPs.
 generated ssh key on ansible server and then copy it to all of ansible hosts.
-		ssh-keygen -t rsa
+		ssh-keygen -t rsa -b 2048
 		ssh-copy-id "hosts"
 		test the connection.
 when everything was good we proceed to next step that is configuering kubespray.
