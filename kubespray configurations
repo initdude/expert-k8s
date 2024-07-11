@@ -1,0 +1,1 @@
+cloned kubespray from https://github.com/kubespray/kubespray.git to our ansible server then config the following file with out needs.
