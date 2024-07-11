@@ -6,10 +6,11 @@ started with configing folloing files:
         for adding our hosts and with specific ports.
         /kubespray/inventory/k8s_cluster/group_vars/etcd.yml
                         *set etcd_memory_limit: "0"
-                                        because we must set unriet to 0 for unrestricted RAM.
+                                         we must set unriet to 0 for unrestricted RAM.
 
-        /kubespray/inventory/k8s_cluster/group_vars/etcd.yml
-                        here set the number of etcds to 5
+        /kubespray/inventory/k8s_cluster/all/all.yml
+                         set Load Balancer IP and Port
+                         set the number of etcds to 5
 
     /kubespray/inventory/k8s_cluster/group_vars/k8s_cluster/k8s-cluster.yml
                         here we give a name to our cluster
