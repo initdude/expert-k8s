@@ -11,6 +11,23 @@ started with configing folloing files:
         /kubespray/inventory/k8s_cluster/all/all.yml
                          set Load Balancer IP and Port
                          set the number of etcds to 5
+                         set cloud_provider: "external"
+                         set external_cloud_provider: "vsphere"
+
 
     /kubespray/inventory/k8s_cluster/group_vars/k8s_cluster/k8s-cluster.yml
                         here we give a name to our cluster
+                        set CRI to containerd
+    /kubespray/inventory/k8s_cluster/all/vsphere.yaml
+                set 
+                  ## Values for the external vSphere Cloud Provider
+                  external_vsphere_vcenter_ip: "vcenter111.domain.local"
+                  external_vsphere_vcenter_port: "443"
+                  external_vsphere_insecure: "false"
+                  external_vsphere_user: "k8s@nict.local" # Can also be set via the `VSPHERE_USER` environment variable
+                  external_vsphere_password: "*********" # Can also be set via the `VSPHERE_PASSWORD` environment variable
+                  external_vsphere_datacenter: "************"
+                  external_vsphere_kubernetes_cluster_id: "********-1358-4976-89c0-************"
+
+                 ## Vsphere version where located VMs
+                 external_vsphere_version: "7u3"
