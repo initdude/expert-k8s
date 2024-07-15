@@ -2,11 +2,23 @@ cloned kubespray from https://github.com/kubespray/kubespray.git to our ansible 
 first of all run the command pip install requeirments.txt
 then copy a sample from /inventory/sample_cluster to /inventory/K8s_cluster to have to all sample of configs.
 started with configing folloing files:
+
+
+
+
    in    /kubespray/inventory/inventory.ini
         for adding our hosts and with specific ports. 
+
+
+
+
    in   /kubespray/inventory/k8s_cluster/group_vars/etcd.yml
                         *set etcd_memory_limit: "0"
                                          we must set unriet to 0 for unrestricted RAM.
+
+
+
+
 
    in  /kubespray/inventory/k8s_cluster/all/all.yml
                          set Load Balancer IP and Port
@@ -15,25 +27,65 @@ started with configing folloing files:
                          set external_cloud_provider: "vsphere"
 
 
+
+
    in  /kubespray/inventory/k8s_cluster/group_vars/k8s_cluster/k8s-cluster.yml
-                        here we give a name to our cluster
-                        set CRI to containerd
+
+
+                        Kubernetes cluster name, also will be used as DNS domain
+                        cluster_name: *****-k8s-cluster
+
+                        # Subdomains of DNS domain to be resolved via /etc/resolv.conf for hostnet pods
+                        ndots: 4
+
+                        ## Automatically renew K8S control plane certificates on first Monday of each month
+                        auto_renew_certificates: true
+                        
+                        # Set to true to remove the role binding to anonymous users created by kubeadm
+                        #remove_anonymous_access: false (we must comment this line)
+
+
    in /kubespray/inventory/k8s_cluster/all/vsphere.yaml
                 set 
                   ## Values for the external vSphere Cloud Provider
+
                   external_vsphere_vcenter_ip: "vcenter111.domain.local"
+
                   external_vsphere_vcenter_port: "443"
+
                   external_vsphere_insecure: "false"
+
                   external_vsphere_user: "k8s@nict.local" # Can also be set via the `VSPHERE_USER` environment variable
+
                   external_vsphere_password: "*********" # Can also be set via the `VSPHERE_PASSWORD` environment variable
+
                   external_vsphere_datacenter: "************"
+
                   external_vsphere_kubernetes_cluster_id: "********-1358-4976-89c0-************"
+
                   ## Vsphere version where located VMs
+
                   external_vsphere_version: "7u3"
 
+
+
+
+
   in  /kubespray/inventory/k8s_cluster/group_vars/k8s_cluster/addons.yml
+                  # Helm deployment
+                  helm_enabled: true
+
+                  # Metrics Server deployment
+                  metrics_server_enabled: true
+
+                  #ephFS provisioner deployment
+                  cephfs_provisioner_enabled: true
+
                   ingress_nginx_enabled: true  (it must be true for ingress controller)
                   ingress_nginx_host_network: true (it must be true for ingress controller)
+
                   dashboard_enabled: true (it must be true for having gui dashboard)
+
+                  argocd_enabled: true    
   
 
