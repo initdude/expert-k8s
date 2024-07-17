@@ -33,7 +33,7 @@ started with configing folloing files:
 
 
                         Kubernetes cluster name, also will be used as DNS domain
-                        cluster_name: *****-k8s-cluster
+                        cluster_name: *****-k8s-cluster.local
 
                         # Subdomains of DNS domain to be resolved via /etc/resolv.conf for hostnet pods
                         ndots: 4
@@ -79,13 +79,13 @@ started with configing folloing files:
                   metrics_server_enabled: true
 
                   #ephFS provisioner deployment
-                  cephfs_provisioner_enabled: true
+                  #cephfs_provisioner_enabled: true
 
                   ingress_nginx_enabled: true  (it must be true for ingress controller)
                   ingress_nginx_host_network: true (it must be true for ingress controller)
 
                   dashboard_enabled: true (it must be true for having gui dashboard)
 
-                  argocd_enabled: true    
+                  #argocd_enabled: true    
   
 
