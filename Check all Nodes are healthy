@@ -1,0 +1,33 @@
+After installing kubernetes, ansible will give us a report that says everything is ok, and all nodes and their components are in good situation.
+
+we can check this by running below commands in Master and Worker nodes to make sure that all of pods that we setup in Kubespray configuration 
+are up and running.
+
+        $ kubectl get pods -o wide -A
+# here we will see all pods are running nice and smooth.
+
+Note: if you enable dashboard you may see some pods like coredns and dashboard itself are stuck in pending mode!
+to fix this just simply disble tain in nodes.
+
+        $ kubectl taint nodes master{1..3} node.cloudprovider.kubernetes.io/uninitialized-
+        $ kubectl taint nodes worker{1..9} node.cloudprovider.kubernetes.io/uninitialized-
+if you wonder what will happens in background of above command it will simply remove the "taint" block in below file:
+
+        kubectl edit node <node-name> 
+
+            taints:
+              - effect: NoSchedule 
+                key: node.cloudprovider.kubernetes.io/uninitialized 
+                value: "true" 
+    # if you want you can just do it by yourself insted of using the command :)
+
+
+
+
+follow up to check our etcd cluster health in next step
+
+
+
+
+
+
