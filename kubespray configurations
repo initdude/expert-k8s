@@ -87,5 +87,17 @@ started with configing folloing files:
                   dashboard_enabled: true (it must be true for having gui dashboard)
 
                   #argocd_enabled: true    
+
+
+
+
+after congiguring all setup, simply run this command:
+
+ansible-playbook -i inventory/mycluster/inventory.ini --become --become-user=root cluster.yml -b -vv
+
+ansible will starts to install kubernetes with Calico network and all adons that we set before.
+follow for more i next session.
+
+
   
 
