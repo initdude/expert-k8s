@@ -95,7 +95,7 @@ after congiguring all setup, simply run this command:
 
 ansible-playbook -i inventory/mycluster/inventory.ini --become --become-user=root cluster.yml -b -vv
 
-ansible will starts to install kubernetes with Calico network and all adons that we set before.
+ansible will starts to install kubernetes with Calico network and all addons that we set before.
 follow for more i next session.
 
 
