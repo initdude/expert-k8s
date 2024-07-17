@@ -1,0 +1,33 @@
+Here we will check the status and healthiness of our etcd cluster that has 5 nodes.
+
+simply Run below commands on one of Master Nodes (because our Etcd in external i just mention that we must check that from outside of etcd cluster.
+
+wget https://github.com/etcd-io/etcd/releases/download/v3.5.14/etcd-v3.5.14-linux-amd64.tar.gz
+   tar -xvzf etcd-v3.5.14-linux-amd64.tar.gz
+   cd etcd-v3.5.14-linux-amd64/ 
+after the etcd downloaded, run below command(ther is no need to install etcd just downlod the tarball and change current directory to it's dir)
+i just star the IP addresses of Etcd nodes to have maximum security ;) just in case
+
+    $ TCDCTL_API=3 ./etcdctl --cacert /etc/ssl/etcd/ssl/ca.pem --cert /etc/ssl/etcd/ssl/node-master1.pem --key /etc/ssl/etcd/ssl/node-master1-key.pem
+     --endpoints https://192.168.***.***:2379,https://1**.***.***.***:2379,https://1**.***.***.***:2379,https://1***.***.***.***:2379,https://1**.***.***.***:2379 
+     -w table check datascale --insecure-skip-tls-verify
+
+
+the output of the command must be like this:
+
++-----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|          ENDPOINT           |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
++-----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+| https://1**.***.***.**:2379 | 3287859c1b60bb57 |  3.5.12 |   21 MB |     false |      false |         3 |      20484 |              20484 |        |
+| https://1**.***.***.**:2379 | c58d3bc3b3ea3688 |  3.5.12 |   21 MB |     false |      false |         3 |      20484 |              20484 |        |
+| https://1**.***.***.**:2379 | 2c7c42baa67d2fa3 |  3.5.12 |   21 MB |     false |      false |         3 |      20484 |              20484 |        |
+| https://1**.***.***.**:2379 | 97f9622fc45ab747 |  3.5.12 |   21 MB |     false |      false |         3 |      20484 |              20484 |        |
+| https://1**.***.***.**:2379 | 24b03991f7460e44 |  3.5.12 |   22 MB |      true |      false |         3 |      20485 |              20485 |        |
++-----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+
+as you can see we have no error and everything is good.
+here we can see that one of our etcd cluster hasbeen selected as LEADER, the leader ship process depends on Quorum Dessicion and etc...
+
+here we go....
+
+follow for more.
