@@ -1,7 +1,7 @@
 cloned kubespray from https://github.com/kubespray/kubespray.git to our ansible server then config the following file with our needs.
 first of all run the command pip install requeirments.txt
 then copy a sample from /inventory/sample_cluster to /inventory/K8s_cluster to have to all sample of configs.
-started with configing folloing files:
+started with configing following files:
 
 
 
