@@ -11,8 +11,10 @@ i just star the IP addresses of Etcd nodes to have maximum security ;) just in c
     $ TCDCTL_API=3 ./etcdctl --cacert /etc/ssl/etcd/ssl/ca.pem --cert /etc/ssl/etcd/ssl/node-master1.pem --key /etc/ssl/etcd/ssl/node-master1-key.pem
      --endpoints https://192.168.***.***:2379,https://1**.***.***.***:2379,https://1**.***.***.***:2379,https://1***.***.***.***:2379,https://1**.***.***.***:2379 
      -w table check datascale --insecure-skip-tls-verify
-
-
+      other option is: check perf ==> for checking performance 
+      another option is: endpoint status
+      another is : check perf --load x1
+      another is : defrag
 the output of the command must be like this:
 
 +-----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
